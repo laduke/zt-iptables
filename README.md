@@ -1,8 +1,16 @@
 # Some helpers for adding zerotier related rules to iptables
-Built on a debian based VPS with a public IP. 
-I'm not a bash expert not do I manage iptables for a living. 
-
 Adds some zt-* chains and adds some rules to them
+
+Built on a debian based VPS with a public IP. 
+I'm not a bash expert. I do not manage iptables for a living. 
+
+## Summary
+- `bash script.sh vl1 insert`
+- `bash script.sh snat gather $NETWORK_ID > my-config`
+- `bash script.sh snat insert my-config` 
+- `iptables-save` // take a look
+
+There, now your VPS can be an exit to the internet.
 
 ## VL1
 
