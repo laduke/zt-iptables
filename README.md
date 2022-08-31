@@ -5,6 +5,7 @@ Built on a debian based VPS with a public IP.
 I'm not a bash expert. I do not manage iptables for a living. 
 
 ## Summary
+- `curl -O https://raw.githubusercontent.com/laduke/zt-iptables/main/src/script.sh`
 - `bash script.sh vl1 insert`
 - `bash script.sh snat gather $NETWORK_ID > my-config`
 - `bash script.sh snat insert my-config` 
