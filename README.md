@@ -12,6 +12,10 @@ I'm not a bash expert. I do not manage iptables for a living.
 
 There, now your VPS can be an exit to the internet.
 
+Don't forget to enable ip forwarding.
+`sysctl -w net.ipv4.conf.all.forwarding=1` 
+`echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/99-ip_forward.conf`
+
 ## VL1
 
 Allows zerotier to peer with other nodes.
