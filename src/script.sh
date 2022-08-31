@@ -64,11 +64,18 @@ snat__insert () {
     SNAT_TAG="zt-snat-${ZT_ID}"
 
     chains__insert
+    snat__flush $ZT_ID
 
     iptables -I ${CHAIN_FORWARD} --in-interface ${ZT_IF} --jump ACCEPT -m comment --comment "${SNAT_TAG}"
     iptables -I ${CHAIN_FORWARD} --out-interface ${ZT_IF} --jump ACCEPT -m comment --comment "${SNAT_TAG}"
 
     iptables -t nat -I ${CHAIN_POSTROUTING} -s ${ZT_NET} -o ${GATEWAY_IF} -j SNAT --to-source ${GATEWAY_IP} -m comment --comment "${SNAT_TAG}"
+}
+
+snat__flush () {
+    NWID=$1
+    iptables -t nat -S | grep "$NWID" | grep "\-A" | cut -d " " -f 2- | xargs -rL1 iptables -t nat -D
+    iptables -S | grep "$NWID" | cut -d " " -f 2- | xargs -rL1 iptables -D
 }
 
 snat__gather () {
