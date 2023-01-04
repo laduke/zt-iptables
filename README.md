@@ -67,9 +67,13 @@ Use your VPS as an internet gateway
 - `bash script.sh snat flush $NETWORK_ID` 
 
 ### What it adds
-`-A zt-fwd -o zt3jn2z57r -m comment --comment zt-snat-9bee8941b0000001 -j ACCEPT`
-`-A zt-fwd -i zt3jn2z57r -m comment --comment zt-snat-9bee8941b0000001 -j ACCEPT`
-`-A zt-post -s 10.2.0.0/24 -o enp1s0 -m comment --comment zt-snat-9bee8941b000001 -j SNAT --to-source xx.211.111.224`
+
+``` shell
+-A zt-fwd -o zt3jn2z57r -m comment --comment zt-snat-9bee8941b0000001 -j ACCEPT
+-A zt-fwd -i zt3jn2z57r -m comment --comment zt-snat-9bee8941b0000001 -j ACCEPT
+-A zt-post -s 10.2.0.0/24 -o enp1s0 -m comment --comment zt-snat-9bee8941b000001 -j SNAT --to-source xx.211.111.224
+```
+
 
 ## Extra
 
